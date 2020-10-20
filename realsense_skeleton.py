@@ -1,6 +1,12 @@
-from cubemos.core.nativewrapper import CM_TargetComputeDevice
-from cubemos.core.nativewrapper import initialise_logging, CM_LogLevel
-from cubemos.skeleton_tracking.nativewrapper import Api, SkeletonKeypoints
+try:
+    from cubemos.core.nativewrapper import CM_TargetComputeDevice
+    from cubemos.core.nativewrapper import initialise_logging, CM_LogLevel
+    from cubemos.skeleton_tracking.nativewrapper import Api, SkeletonKeypoints
+except ImportError:
+    from cubemos.skeletontracking.core_wrapper import CM_TargetComputeDevice
+    from cubemos.skeletontracking.core_wrapper import initialise_logging, CM_LogLevel
+    from cubemos.skeletontracking.native_wrapper import Api, TrackingContext, SkeletonKeypoints
+    from cubemos.skeletontracking.native_wrapper import CM_SKEL_TrackingSimilarityMetric, CM_SKEL_TrackingMethod
 import cv2
 import os
 import platform
